@@ -53,26 +53,20 @@ function subKindList(){
     return list
 }
 
-function ff(){
+function comments(){
     var list = []
-    for(var i = 0 ; i <10 ; i ++){
+    for(var i = 0 ;i < 10 ; i ++){
         list.push({
-            id: Random.uuid(),
-            title: Random.ctitle(),
-            author: Random.cname(),
-            pubTime: Random.date(),
-            summary: Random.cparagraph(1),
-            cover: Random.image('375x200',Random.color()),
-            // cover: 'https://api.dujin.org/pic/?ts='+Random.integer(),
-            zanCount: Random.integer(0,30),
-            viewCount: Random.integer(10,100),
-            commentCount: Random.integer(0,6)
+            id: Random.guid(),
+            username: Random.name(),
+            date: Random.date(),
+            content: Random.cparagraph(),
+            avatar: Random.image('40x40',Random.color(),Random.cfirst())
         })
     }
     return list
 }
-
-
 export default{
-    subKindList
+    subKindList,
+    comments
 }

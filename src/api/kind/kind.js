@@ -4,8 +4,14 @@ function getSubKindList(){
         resolve(kindMock.subKindList())
     })
 }
+function getComments(){
+    return new Promise((resolve,reject)=>{
+        resolve(kindMock.comments())
+    })
+}
 
 export default {
-    getSubKindList
+    getSubKindList,
+    getComments
     
 }

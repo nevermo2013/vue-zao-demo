@@ -14,7 +14,7 @@
           <span class="price">{{g.price}}.00</span>
           <div class="like-link">
             <span class="like">{{g.like}}人喜欢</span>
-            <span class="link">检查详情</span>
+            <router-link tag="span" :to="{name:'goodsDetail',params:{id:g.id}}" class="link">检查详情</router-link>
           </div>
         </div>
       </div>
