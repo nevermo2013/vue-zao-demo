@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <keep-alive>
-      <transition name="fade" mode="out-in">
+      <transition :name="transitionName" mode="out-in">
        <router-view class="router-view"></router-view>
       </transition>
     </keep-alive>
@@ -12,9 +12,24 @@
 <script>
 import FootBar from '@components/FootBar.vue'
 export default {
+  data:{
+    transitionName:'slide-left'
+  },
   components:{
     FootBar
+  },
+  watch: {
+  '$route' (to, from) {
+    const tabPath = ['/home','/kind','/find/article','/find/goods','/main'];
+    if(tabPath.some(item=>item==to.path)&&tabPath.some(item=>item==from.path)){
+      this.transitionName = 'fade'
+    }else{
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    }
   }
+}
 }
 </script>
 <style lang="scss">
@@ -40,5 +55,39 @@ a{
 }
 .router-view{
   margin-bottom: 100px;
+  overflow-x: hidden;
+}
+.slide-left-enter-active{
+  animation: slideLeft .4s;
+}
+.slide-right-enter-active{
+  animation: slideRight .4s;
+}
+.fade-enter-active{
+  transition: all ease .2s;
+}
+.fade-enter{
+  opacity: 0;
+}
+@keyframes slideLeft{
+  0%{
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight{
+  0%{
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 </style>

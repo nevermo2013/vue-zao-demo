@@ -1,6 +1,6 @@
 <template>
   <div class="article-main">
-    <div class="article-block" v-for="art in articles" :key="art.id">
+    <router-link tag="div" :to="{name:'articleDetail',params:{id:art.id}}" class="article-block" v-for="art in articles" :key="art.id">
       <p class="title">{{art.title}}</p>
       <p class="author-pubTime">{{art.pubTime}} </p>
       <div class="summar">{{art.summary}}</div>
@@ -18,11 +18,11 @@
               </span>
           </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 <script>
-import ArticleApi from "@/api/article";
+import ArticleApi from "@/api/find/article";
 export default {
   name: "Article",
   data() {
@@ -37,16 +37,16 @@ export default {
   },
   methods: {},
   directives:{
-      lazy(el,binding){
-          var img = new Image();
-          img.src = el.src;
-          var imgBg = require('@/assets/imgs/icons/img-bg.png');
-          el.src = imgBg;
-          img.onload = function(){
-              el.src = this.src;
-          }
-          console.log(el)
-      }
+      // lazy(el,binding){
+      //     var img = new Image();
+      //     img.src = el.src;
+      //     var imgBg = require('@/assets/imgs/icons/img-bg.png');
+      //     el.src = imgBg;
+      //     img.onload = function(){
+      //         el.src = this.src;
+      //     }
+      //     // console.log(el)
+      // }
   }
 };
 </script>

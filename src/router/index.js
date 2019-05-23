@@ -7,6 +7,9 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior (to, from, savedPosition) {
+    return {x:0,y:0}
+  },
   routes: [
     // {
     //   path: '/',
@@ -37,10 +40,15 @@ export default new Router({
       name: 'subKind',
       component: () => import(/* webpackChunkName: "kind" */ '@/views/kind/subkind/SubKind.vue'),
     },
+    // {
+    //   path: '/kind/subkind/:subKindId/detail/:id',
+    //   name: 'goodsDetail',
+    //   component: () => import(/* webpackChunkName: "kind" */ '@/views/kind/detail/GoodsDetail.vue'),
+    // },
     {
-      path: '/kind/subkind/:subKindId/detail/:id',
+      path: '/goods/detail/:id',
       name: 'goodsDetail',
-      component: () => import(/* webpackChunkName: "kind" */ '@/views/kind/detail/GoodsDetail.vue'),
+      component: () => import(/* webpackChunkName: "goods" */ '@/views/kind/detail/GoodsDetail.vue'),
     },
     {
       path: '/find',
@@ -70,9 +78,15 @@ export default new Router({
       ]
     },
     {
-      path:'article/detail/:id',
+      path:'/article/detail/:id',
       name: 'articleDetail',
       component: () => import(/* webpackChunkName: "find" */ '@/views/find/article/ArticleDetail.vue'),
+      
+    },
+    {
+      path:'/find/goods/detail/:id',
+      name: 'findGoodsDetail',
+      component: () => import(/* webpackChunkName: "find" */ '@/views/find/goods/GoodsDetail.vue'),
       
     },
     {
