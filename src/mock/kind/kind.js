@@ -66,6 +66,11 @@ function comments(){
     }
     return list
 }
+
+function goodsSKU(){
+    var goods = {};
+    
+}
 export default{
     subKindList,
     comments

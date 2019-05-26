@@ -98,6 +98,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "main" */ '@/views/main/Main.vue')
     },
     {
+      path: '/main/order',
+      name: 'order',
+      component: () => import(/* webpackChunkName: "order" */ '@/views/main/order/Order.vue')
+    },
+    {
       path: '*',
       redirect: '/home'
     }

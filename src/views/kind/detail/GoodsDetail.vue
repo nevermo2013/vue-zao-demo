@@ -10,8 +10,14 @@
         <span class="tab-text" :class="{active:tabType==0}">详情</span>
         <span class="tab-text"  :class="{active:tabType==1}">评价</span>
     </div>
-    <my-goods class="goods-com"></my-goods>
-    <my-comments class="comments-com"></my-comments>
+    <my-goods :dialog.sync="dialog" class="goods-com"></my-goods>
+    <my-comments  class="comments-com"></my-comments>
+    <div class="footer-bar">
+        <span class="icon icon-like"></span>
+        <span class="icon icon-kf"></span>
+        <button @click="openDialog(0)" class="btn btn-cart">加入购物车</button>
+        <button @click="openDialog(1)" class="btn btn-buy">立即购买</button>
+    </div>
   </div>
 </template>
 <script>
@@ -25,8 +31,14 @@ export default {
     },
     data(){
         return {
-            tabType: 0
+          dialog: false,
+          tabType: 0
         }
+    },
+    methods:{
+      openDialog(type){
+        this.dialog = true;
+      }
     }
 };
 </script>
@@ -95,6 +107,52 @@ export default {
       width: 346px;
       margin: 0 auto;
       margin-top: 100px;
+  }
+  .footer-bar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 44px;
+    background-color: #fff;
+    z-index: 999;
+    align-items: center;
+    .icon{
+      display: block;
+      width: 40px;
+      height: 40px;
+      background: no-repeat center;
+      background-size: 24px 24px;
+      &.icon-like{
+        background-image: url('../../../assets/imgs/icons/like.png');
+      }
+      &.icon-kf{
+        background-image: url('../../../assets/imgs/icons/kf.png');
+        margin-right: 20px;
+      }
+
+    }
+    .btn{
+      border: none;
+      outline: none;
+      width: 112px;
+      height: 40px;
+      border-radius: 4px;
+      font-size: 15px;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      box-sizing: border-box;
+      &.btn-cart{
+        border: 1px solid #1C4B47;
+        color: #1C4B47;
+      }
+      &.btn-buy{
+        background: #1C4B47;
+      }
+    }
   }
 }
 </style>

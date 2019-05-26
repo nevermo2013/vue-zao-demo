@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
-import store from './store'
+import store from './store/index.js'
 import '@/assets/style/reset.css'
 import 'lib-flexible'
 import 'vue-awesome/icons'
