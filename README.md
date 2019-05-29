@@ -54,5 +54,8 @@
 
 ```
 
+### icon
+> https://justineo.github.io/vue-awesome/demo/
+
 
 

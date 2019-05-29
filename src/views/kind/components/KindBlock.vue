@@ -1,6 +1,7 @@
 <template>
     <div class="kind-block">
         <img @click="toggleSubKind" class="kind-img-block" :src="kind.img" alt="">
+        <transition name="slide">
         <ul v-show="active == id" class="sub-kinds">
             <router-link class="kind-item"   tag="li" :to="{name:'subKind',params:{subKindId:sk.id}}" v-for="sk in kind.subKinds" :key="sk.id">
                 <span>{{sk.cname}}</span>
@@ -8,6 +9,8 @@
                 <span>></span>
             </router-link>
         </ul>
+        </transition>
+        
     </div>
 </template>
 <script>
@@ -57,6 +60,15 @@ export default {
             }
         }
     }
+    .slide-enter-active,
+    .slide-leave-active{
+        transition: all ease .4s;
+    }
+    .slide-enter,
+    .slide-leave-to{
+        opacity: 0;
+    }
+
 </style>
 
 

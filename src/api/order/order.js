@@ -5,7 +5,15 @@ function getOrderList(data){
     })
 }
 
+
+
+function getOrderDetailById(data){
+    return new Promise((resolve,reject)=>{
+        resolve(orderMock.getOrderDetailById(data.id))
+    })
+}
 export default {
-    getOrderList
+    getOrderList,
+    getOrderDetailById
     
 }

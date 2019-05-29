@@ -103,6 +103,36 @@ export default new Router({
       component: () => import(/* webpackChunkName: "order" */ '@/views/main/order/Order.vue')
     },
     {
+      path: '/main/order/detail/:id',
+      name: 'orderDetail',
+      component: () => import(/* webpackChunkName: "orderDetail" */ '@/views/main/orderDetail/OrderDetail.vue')
+    },
+    {
+      path: '/main/logistics/:id',
+      name: 'logistics',
+      component: () => import(/* webpackChunkName: "logistics" */ '@/views/main/logistics/Logistics.vue')
+    },
+    {
+      path: '/main/score/:id',
+      name: 'score',
+      component: () => import(/* webpackChunkName: "score" */ '@/views/main/score/Score.vue')
+    },
+    {
+      path: '/main/saleAfter/:id',
+      name: 'saleAfter',
+      component: () => import(/* webpackChunkName: "saleAfter" */ '@/views/main/saleAfter/SaleAfter.vue')
+    },
+    {
+      path: '/main/goodsColl',
+      name: 'goodsColl',
+      component: () => import(/* webpackChunkName: "goodsColl" */ '@/views/other/goodsColl/GoodsColl.vue')
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: () => import(/* webpackChunkName: "goodsColl" */ '@/views/cart/Cart.vue')
+    },
+    {
       path: '*',
       redirect: '/home'
     }

@@ -10,9 +10,9 @@
             <a href="javascript:;" class="chat">
 
             </a>
-            <a href="javascript:;" class="cart">
+            <router-link :to="{name:'cart'}" class="cart">
                 
-            </a>
+            </router-link>
         </div>
         <div class="swiper-section">
             <div class="swiper-title">

@@ -24,7 +24,7 @@
       </div>
     </div>
     <ul class="order-list">
-      <li class="order-item" v-for="order in orderListCom" :key="order.orderId">
+      <router-link tag="li" :to="{name:'orderDetail',params:{id:order.orderId}}" class="order-item" v-for="order in orderListCom" :key="order.orderId">
           <div class="line1">
               <span class="orderId">
                   订单编号：{{order.orderId}}
@@ -72,15 +72,15 @@
                       <button class="btn btn2">付款</button>
                   </template>
                   <template v-else-if="order.status==2">
-                      <button class="btn btn1">查看物流</button>
+                      <router-link :to="{name:'logistics',params:{id:order.orderId}}" tag="button" class="btn btn1">查看物流</router-link>
                       <button class="btn btn2">确认收货</button>
                   </template>
                   <template v-else-if="order.status==3">
-                      <button class="btn btn1">申请售后</button>
-                      <button class="btn btn2">评价</button>
+                      <router-link tag="button" :to="{name:'saleAfter',params:{id:order.orderId}}" class="btn btn2">申请售后</router-link>
+                      <router-link tag="button" :to="{name:'score',params:{id:order.orderId}}" class="btn btn2">评价</router-link>
                   </template>
           </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -96,6 +96,7 @@ export default {
   },
   created() {
     this.getOrderList();
+    this.filterType = this.$route.query.type;
   },
   methods: {
     getOrderList() {
@@ -127,7 +128,8 @@ $baseColor: #034C46;
     height: 44px;
     padding: 0 16px;
     box-sizing: border-box;
-
+    background-color: #f4f4f4;
+    z-index: 999;
     .icon {
       display: block;
       height: 20px;
@@ -148,11 +150,16 @@ $baseColor: #034C46;
     }
   }
   .filter-bar {
+    position: fixed;
+    left: 0;
+    top: 44px;
     display: flex;
     justify-content: space-around;
     width: 100%;
-    margin-top: 50px;
+    // margin-top: 50px;
     margin-bottom: 10px;
+    background-color: #f4f4f4;
+    z-index: 999;
 
     .filter-item {
       position: relative;
@@ -173,6 +180,7 @@ $baseColor: #034C46;
     }
   }
   .order-list {
+      margin-top: 100px;
     .order-item {
       width: 346px;
       margin: 20px auto;
