@@ -53,7 +53,7 @@ export default new Router({
     {
       path: '/find',
       name: 'find',
-      redirect: '/find/article',
+      redirect: '/find/goods',
       meta:{
         footShow:true
       },
@@ -130,7 +130,42 @@ export default new Router({
     {
       path: '/cart',
       name: 'cart',
-      component: () => import(/* webpackChunkName: "goodsColl" */ '@/views/cart/Cart.vue')
+      component: () => import(/* webpackChunkName: "cart" */ '@/views/cart/Cart.vue')
+    },
+    {
+      path: '/setting/address',
+      name: 'address',
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/setting/address/Address.vue')
+    },
+    {
+      path: '/setting/ticket',
+      name: 'ticket',
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/setting/ticket/Ticket.vue')
+    },
+    {
+      path: '/setting/account',
+      name: 'account',
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/setting/account/Account.vue')
+    },
+    {
+      path: '/setting/about',
+      name: 'settingAbout',
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/setting/about/About.vue')
+    },
+    {
+      path: '/setting/login',
+      name: 'login',
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/setting/login/Login.vue')
+    },
+    {
+      path: '/setting/register',
+      name: 'register',
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/setting/login/Register.vue')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import(/* webpackChunkName: "setting" */ '@/views/search/Search.vue')
     },
     {
       path: '*',

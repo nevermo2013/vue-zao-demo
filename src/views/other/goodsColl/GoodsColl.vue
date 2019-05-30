@@ -44,7 +44,9 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.header {
+.goods-coll-main{
+    background: #fff;
+    .header {
   position: fixed;
   left: 0;
   top: 0;
@@ -112,4 +114,6 @@ export default {
     }
   }
 }
+}
+
 </style>

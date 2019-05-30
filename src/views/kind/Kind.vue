@@ -1,24 +1,25 @@
 <template>
     <div class="kind-main">
         <div class="header-bar">
-            <span class="search">
+            <router-link :to="{name:'search'}" class="search">
 
-            </span>
+            </router-link>
             <p class="title">
                 ZAOWU 造物
             </p>
-            <a href="javascript:;" class="chat">
+            <a @click="handleKf" href="javascript:;" class="chat">
 
             </a>
-            <a href="javascript:;" class="cart">
+            <router-link :to="{name:'cart'}" class="cart">
                 
-            </a>
+            </router-link>
         </div>
         <div class="kind-block-list">
 
          <kind-block  :active.sync="showKinds" :id="index" :kind="kind" v-for="(kind,index) in kinds" :key ="kind.ename"></kind-block>
         </div>
         <!-- <router-view></router-view> -->
+        <span>暂未开通客服!</span>
     </div>
 </template>
 <script>
@@ -30,6 +31,7 @@ export default {
     },
     data(){
         return {
+            sorryShow:false,
             kinds:[
                 {
                     cname: '创意',
@@ -124,6 +126,14 @@ export default {
             ],
             showKinds:-1,
         }
+    },
+    methods:{
+        handleKf(){
+          this.sorryShow = true;
+          setTimeout(()=>{
+              this.sorryShow = false;
+          },2000)
+        }
     }
 
 
@@ -169,5 +179,23 @@ export default {
         width: 100%;
         margin-top: 50px;
     }
+    .sorry{
+      display: flex;
+      width: 140px;
+      background-color: #e5e5e5;
+      border:1px solid #e9e9e9;
+      border-radius: 6px;
+      position: fixed;
+      left: 50%;
+      margin-left: -70px;
+      top: 300px;
+      align-items: center;
+      justify-content: center;
+      .icon{
+          width: 36px;
+          height: 36px;
+      }
+      z-index: 1000;
+  }
 </style>
 

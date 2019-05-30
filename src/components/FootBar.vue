@@ -71,7 +71,7 @@ export default {
             &.main{
                 background-image: url('../assets/imgs/icons/main.png');
             }
-            &.active.main{
+            &.router-link-active.main{
                 background-image: url('../assets/imgs/icons/main-active.png');
             } 
         }

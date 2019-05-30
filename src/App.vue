@@ -35,6 +35,9 @@ export default {
 }
 </script>
 <style lang="scss">
+body{
+  // min-height: 100vh;
+}
 a{
   text-decoration: none;
 }

@@ -4,8 +4,8 @@
       <span class="setting"></span>
       <div class="logo"></div>
       <div class="btns">
-        <button class="btn">注册</button>
-        <button class="btn">登陆</button>
+        <router-link :to="{name:'register'}" class="btn">注册</router-link>
+        <router-link :to="{name:'login'}" class="btn">登陆</router-link>
       </div>
     </div>
     <div class="my-card-bar">
@@ -54,48 +54,66 @@
     </div>
 
     <ul class="setting-list">
-      <li class="item">
+      <router-link tag="li" :to="{name:'address'}" class="item">
         <div class="icon-text">
           <img class="icon" :src="require('@/assets/imgs/main/position.png')" alt>
           <span class="text">收货地址</span>
         </div>
         <span class="arr-r"></span>
-      </li>
-      <li class="item">
+      </router-link>
+      <router-link tag="li" :to="{name:'ticket'}" class="item">
         <div class="icon-text">
           <img class="icon" :src="require('@/assets/imgs/main/ticket.png')" alt>
           <span class="text">我的优惠券</span>
         </div>
         <span class="arr-r"></span>
-      </li>
-      <li class="item">
+      </router-link>
+      <router-link tag="li" :to="{name:'account'}" class="item">
         <div class="icon-text">
           <img class="icon" :src="require('@/assets/imgs/main/account.png')" alt>
           <span class="text">账户与安全</span>
         </div>
         <span class="arr-r"></span>
-      </li>
-      <li class="item">
+      </router-link>
+      <li @click="handleKf" class="item">
         <div class="icon-text">
           <img class="icon" :src="require('@/assets/imgs/main/tel.png')" alt>
           <span class="text">联系客服</span>
         </div>
         <span class="arr-r"></span>
       </li>
-      <li class="item">
+      <router-link tag="li" :to="{name:'settingAbout'}" class="item">
         <div class="icon-text">
           <img class="icon" :src="require('@/assets/imgs/main/about.png')" alt>
           <span class="text">关于造物</span>
         </div>
         <span class="arr-r"></span>
-      </li>
+      </router-link>
     </ul>
+    <p v-show="sorryShow" class="sorry">
+      <img class="icon" :src="require('@/assets/imgs/icons/sorry.png')" alt>
+      <span>暂未开通客服!</span>
+    </p>
   </div>
 </template>
 <script>
+import { setTimeout } from 'timers';
 export default {
   name: "Main",
-  components: {}
+  components: {},
+  data(){
+      return {
+          sorryShow:false
+      }
+  },
+  methods:{
+      handleKf(){
+          this.sorryShow = true;
+          setTimeout(()=>{
+              this.sorryShow = false;
+          },2000)
+      }
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -224,6 +242,23 @@ export default {
         background-size: 20px;
       }
     }
+  }
+  .sorry{
+      display: flex;
+      width: 140px;
+      background-color: #e5e5e5;
+      border:1px solid #e9e9e9;
+      border-radius: 6px;
+      position: fixed;
+      left: 50%;
+      margin-left: -70px;
+      top: 50%;
+      align-items: center;
+      justify-content: center;
+      .icon{
+          width: 36px;
+          height: 36px;
+      }
   }
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
     <div class="home-main">
         <div class="header-bar">
-            <span class="search">
+            <router-link :to="{name:'search'}" class="search">
 
-            </span>
+            </router-link>
             <p class="title">
                 ZAOWU 造物
             </p>
-            <a href="javascript:;" class="chat">
+            <a @click="handleKf" href="javascript:;" class="chat">
 
             </a>
             <router-link :to="{name:'cart'}" class="cart">
@@ -16,8 +16,8 @@
         </div>
         <div class="swiper-section">
             <div class="swiper-title">
-                <a @click="imgs = imgs1;"  href="javascript:;" class="swiper-title-link" :class="{active:titlesActive=='title1'}">推荐</a>
-                <a @click="imgs = imgs2;" href="javascript:;" class="swiper-title-link" :class="{active:titlesActive=='title2'}">活动</a>
+                <a @click="handleChangeImgs(imgs1,'title1')"  href="javascript:;" class="swiper-title-link" :class="{active:titlesActive=='title1'}">推荐</a>
+                <a @click="handleChangeImgs(imgs2,'title2')" href="javascript:;" class="swiper-title-link" :class="{active:titlesActive=='title2'}">活动</a>
                 <a href="javascript:;" class="swiper-title-link">品牌</a>
                 <a href="javascript:;" class="swiper-title-link">定制</a>
             </div>
@@ -52,6 +52,10 @@
             </div>
             <monday-goods style="monday-goods"></monday-goods>
         </div>
+        <p v-show="sorryShow" class="sorry">
+      <img class="icon" :src="require('@/assets/imgs/icons/sorry.png')" alt>
+      <span>暂未开通客服!</span>
+    </p>
     </div>
     
 </template>
@@ -69,6 +73,7 @@ export default {
     },
     data() {
       return {
+           sorryShow:false,
           titlesActive:'title1',
           imgs:[
               {
@@ -132,7 +137,17 @@ export default {
     },
     methods:{
         callback(){
-        }
+        },
+        handleChangeImgs(imgs,title){
+            this.imgs = imgs;
+            this.titlesActive = title;
+        },
+        handleKf(){
+          this.sorryShow = true;
+          setTimeout(()=>{
+              this.sorryShow = false;
+          },2000)
+      }
     }
 
 
@@ -247,6 +262,24 @@ export default {
         margin-top: 200px;
         background-color: pink;
     }
+    .sorry{
+      display: flex;
+      width: 140px;
+      background-color: #e5e5e5;
+      border:1px solid #e9e9e9;
+      border-radius: 6px;
+      position: fixed;
+      left: 50%;
+      margin-left: -70px;
+      top: 300px;
+      align-items: center;
+      justify-content: center;
+      .icon{
+          width: 36px;
+          height: 36px;
+      }
+      z-index: 1000;
+  }
 </style>
 
 
